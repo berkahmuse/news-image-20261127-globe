@@ -1,6 +1,8 @@
 # The World in One Day — 27 November 2026
 
 [![make.fun](https://make.fun/badge/news-image-20261127.svg)](https://make.fun/c/news-image-20261127)
+[![rank](https://make.fun/badge/news-image-20261127/berkahmuse/news-image-20261127-globe/rank.svg)](https://make.fun/bounty/news-image-20261127)
+[![reward](https://make.fun/badge/news-image-20261127/berkahmuse/news-image-20261127-globe/reward.svg)](https://make.fun/bounty/news-image-20261127)
 
 Entry for the make.fun competition
 [Sum up 27 November's world news in one image](https://make.fun/c/news-image-20261127)
