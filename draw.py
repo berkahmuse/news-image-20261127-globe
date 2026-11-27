@@ -49,32 +49,35 @@ F_FOOT = font(FONT_R, 16)
 F_SRC = font(FONT_R, 14)
 F_NUM = font(FONT_B, 15)
 
-# --- stories (verified 27 Nov 2026) -----------------------------------------
+# --- stories (verified 27 Nov 2026; see README for timestamps) --------------
+# Every story below was first reported, or happened, on 27 November 2026
+# in at least one Asia-Pacific time zone (UTC+7 to +13). Per-story
+# timestamps and time-zone conversions are documented in README.md.
 STORIES = [
-    dict(n=1, tag="UNITED STATES",
-         head="Thanksgiving storm batters the US",
-         body="800,000+ without power; Macy's parade delayed, flights grounded",
-         lon=-97, lat=39, card=(24, 146)),
-    dict(n=2, tag="UNITED KINGDOM",
-         head="UK net migration hits 30-year low",
-         body="77,000 in year to June \u2014 lowest since 1997, ONS says",
-         lon=-6, lat=57, card=(748, 146)),
-    dict(n=3, tag="FRANCE",
-         head="Depardieu to stand trial for rape",
-         body="Paris court rejects appeal over alleged 2018 attack",
-         lon=-3, lat=47, card=(24, 416)),
-    dict(n=4, tag="GAZA",
-         head="Israeli strikes kill 10 in Gaza",
-         body="Hamas weighs response as year-old ceasefire frays",
-         lon=34.5, lat=31.5, card=(748, 416)),
-    dict(n=5, tag="SPAIN \u00b7 IBIZA",
-         head="Diesel tanker sinks off Ibiza",
-         body="1 crew member dead; 7,000 tonnes aboard, spill feared",
-         lon=0, lat=37, card=(24, 656)),
-    dict(n=6, tag="GENEVA \u00b7 CHESS",
-         head="Chess title fight deadlocked",
-         body="Gukesh\u2013Sindarov draw Game 3 in 60 moves; 1.5\u20131.5",
-         lon=16, lat=46, card=(748, 656)),
+    dict(n=1, tag="USA · TEXAS",
+         head="Exchanges file for 23-hour trading",
+         body="24X and Texas exchanges seek round-the-clock trading",
+         lon=-96.8, lat=32.8, card=(24, 146)),
+    dict(n=2, tag="PAKISTAN",
+         head="Mecca alliance meets in Islamabad",
+         body="Pakistan, Saudi, Turkey open defence talks Nov 27\u201328",
+         lon=73.06, lat=33.68, card=(748, 146)),
+    dict(n=3, tag="USA · MICHIGAN",
+         head="Bears stun Lions in Thanksgiving thriller",
+         body="Williams to Odunze, 3 seconds left; 39\u201335, Bears lead North",
+         lon=-83.05, lat=42.33, card=(24, 416)),
+    dict(n=4, tag="KUWAIT",
+         head="Iran blames Kyiv for deadly strike",
+         body="Tehran denies drone attack that killed 2 Italians",
+         lon=47.98, lat=29.3, card=(748, 416)),
+    dict(n=5, tag="GUINEA-BISSAU",
+         head="Elections delayed to 2028",
+         body="Military rulers extend transition by two years",
+         lon=-15.6, lat=11.9, card=(24, 656)),
+    dict(n=6, tag="SAUDI ARABIA",
+         head="Houthis hit Aramco refinery",
+         body="1 worker killed, several hurt; some operations halted",
+         lon=42.5, lat=16.9, card=(748, 656)),
 ]
 
 # --- continent outlines (lon, lat), simplified -------------------------------
@@ -106,9 +109,10 @@ CONTINENTS = [
      (136, -12), (132, -12), (126, -14), (122, -17)],
 ]
 
-# --- orthographic projection, Atlantic centred ------------------------------
+# --- orthographic projection, Atlantic centred (rotated east so that
+# Islamabad, at the edge of the visible hemisphere, sits on the globe) ----
 CX, CY, R = 512, 486, 222
-LON0, LAT0 = math.radians(-28), math.radians(22)
+LON0, LAT0 = math.radians(-16), math.radians(22)
 SIN0, COS0 = math.sin(LAT0), math.cos(LAT0)
 
 
@@ -248,7 +252,10 @@ def main():
             d.text((x + 14, yy), ln, font=F_HEAD, fill=CREAM)
             yy += 25
         yy += 4
-        for ln in wrap(st["body"], F_BODY, 224)[:2]:
+        # Body may use up to 3 lines: a 2-line cap dropped words (card 1
+        # lost "grounded" in v1). 2-line heads + 3-line bodies still fit
+        # the 156 px card (last baseline y+138, text bottom ~y+153).
+        for ln in wrap(st["body"], F_BODY, 224)[:3]:
             d.text((x + 14, yy), ln, font=F_BODY, fill=MUTED)
             yy += 20
 
@@ -256,7 +263,7 @@ def main():
     d.line([(312, 848), (712, 848)], fill=GOLD, width=1)
     d.text((CX, 862), "Six stories \u00b7 One day \u00b7 Reported around the world",
            font=F_FOOT, fill=CREAM, anchor="ma")
-    d.text((CX, 892), "Sources: Reuters \u00b7 USA TODAY \u00b7 ONS \u00b7 Chess.com",
+    d.text((CX, 892), "Sources: Reuters \u00b7 Fox News \u00b7 Federal Register",
            font=F_SRC, fill=MUTED, anchor="ma")
     d.text((CX, 918), "make.fun \u2014 news-image-20261127 \u00b7 @berkahmuse",
            font=F_SRC, fill=MUTED, anchor="ma")

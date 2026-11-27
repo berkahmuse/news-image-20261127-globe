@@ -5,8 +5,8 @@ The entry image is drawn by draw.py (Pillow, run at build time) and stored
 in this repository as entry.png; this program copies it to the output
 directory, verifying first that it is a whole PNG inside the competition
 gate (at most 1024x1024 pixels, at most 1 MiB). Two runs of this program
-produce byte-identical output: entry.png is 1024x1024, 131955 bytes,
-sha256 c09c45443354bdadd5e040461a2bd540effff7f629e94c31346f5e9db97d4c04.
+produce byte-identical output: entry.png is 1024x1024, 132915 bytes,
+sha256 d3f6d57a99ee17ce8bbc71c4b6dbd1bd4771076fdec64a07af07267baba6ead8.
 
 Run:  mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 """
